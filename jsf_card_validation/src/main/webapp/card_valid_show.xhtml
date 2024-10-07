@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://xmlns.jcp.org/jsf/core"
+xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<h:head>
+    <!-- External CSS file -->
+    <link href="styles.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Page Title -->
+    <title><h:outputText value="#{msgs.title}" /></title>
+</h:head>
+
+<h:body>
+    <!-- Start of JSF form -->
+    <h:form>
+
+        <!-- Input fields for amount, credit card, and expiration date -->
+        <h:panelGrid columns="3">
+            <!-- Amount -->
+            <h:outputText value="Enter Amount" />
+			<h:inputText id="amount" label="#{msgs.amount}" value="#{cardResultBean.amount}" required="true">
+			    <f:convertNumber minFractionDigits="2" />
+			</h:inputText>
+            <h:message for="amount" styleClass="errorMessage" /><br></br>
+
+            <!-- Credit Card Field -->
+            <h:outputText value="Credit Card Number:" />
+			<h:inputText id="card" label="Credit Card" value="#{cardResultBean.card}" required="true">
+			    <f:validator validatorId="creditCardValidator" />
+			</h:inputText>
+
+            <h:message for="card" styleClass="errorMessage" /><br></br>
+
+            <!-- Expiration Date -->
+            <h:outputText value="Enter Expiration Date" />
+			<h:inputText id="date" label="#{msgs.expirationDate}" value="#{cardResultBean.date}" required="true">
+			    <f:convertDateTime pattern="MM/yyyy" />
+			</h:inputText>
+            <h:message for="date" styleClass="errorMessage" /><br></br>
+        </h:panelGrid>
+
+        <!-- Submit button -->
+        <h:commandButton value="Process" action="process" />
+    </h:form>
+</h:body>
+</html>

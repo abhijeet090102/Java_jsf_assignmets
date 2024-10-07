@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <title>Payment Results</title>
+</head>
+<h:body>
+    <h1>Payment Status</h1>
+
+    <!-- Display success message -->
+    <h:messages globalOnly="true" style="color:green;" />
+
+    <!-- Display payment details -->
+    <h:panelGrid columns="2">
+        <h:outputText value="Amount Paid:" />
+        <h:outputText value="#{cardResultBean.amount}" />
+
+        <h:outputText value="Credit Card Number:" />
+        <h:outputText value="#{cardResultBean.card}" />
+
+        <h:outputText value="Expiration Date:" />
+        <h:outputText value="#{cardResultBean.date}" />
+    </h:panelGrid>
+
+    <!-- Link to go back to the payment form -->
+    <h:link value="Go back to payment form" outcome="index.xhtml" />
+</h:body>
+</html>

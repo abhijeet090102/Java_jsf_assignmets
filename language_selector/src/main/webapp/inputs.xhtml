@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Select State</title>
+</head>
+<h:body>
+    <h:form>
+        <h1>Select a State to See Its Language</h1>
+        <!-- Dropdown to select the state -->
+        <h:panelGrid columns="2">
+            <h:outputText value="Select State: " />
+            <h:selectOneMenu id="state" value="#{stateBean.selectedState}" valueChangeListener="#{stateBean.stateChanged}" onchange="submit()">
+                <f:selectItem itemLabel="-- Select State --" itemValue="" />
+                <f:selectItem itemLabel="West Bengal" itemValue="West Bengal" />
+                <f:selectItem itemLabel="Assam" itemValue="Assam" />
+                <f:selectItem itemLabel="Jammu Kashmir" itemValue="Jammu Kashmir" />
+                <f:selectItem itemLabel="Panjab" itemValue="Panjab" />
+            </h:selectOneMenu>
+        </h:panelGrid>
+	
+	 <!-- Display the language of the selected state -->
+        <h:panelGrid columns="2">
+            <h:outputText value="Language: " />
+            <h:outputText value="#{stateBean.language}" />
+        </h:panelGrid>
+    </h:form>
+</h:body>
+</html>

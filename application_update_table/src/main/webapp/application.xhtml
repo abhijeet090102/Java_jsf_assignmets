@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Insert title here</title>
+</head>
+<h:body>
+	<h:form>
+		<h2>JSF 2 dataTable example</h2>
+		
+		<h:dataTable value="#{orderController.orders}" var="order" border="1">
+            <h:column>
+                <f:facet name="header">Order No</f:facet>
+                #{order.orderNo}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Product Name</f:facet>
+                #{order.productName}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Price</f:facet>
+                #{order.price}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Quantity</f:facet>
+                #{order.quantity}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Action</f:facet>
+                <h:commandLink value="Edit" action="#{orderController.editOrder(order)}"/>
+            </h:column>
+        </h:dataTable>
+
+        <h:panelGrid columns="2" rendered="#{not empty orderController.selectedOrder}">
+            <h:outputLabel for="orderNo" value="Order No:" />
+            <h:inputText id="orderNo" value="#{orderController.selectedOrder.orderNo}" disabled="true" />
+
+            <h:outputLabel for="productName" value="Product Name:" />
+            <h:inputText id="productName" value="#{orderController.selectedOrder.productName}" />
+
+            <h:outputLabel for="price" value="Price:" />
+            <h:inputText id="price" value="#{orderController.selectedOrder.price}" />
+
+            <h:outputLabel for="quantity" value="Quantity:" />
+            <h:inputText id="quantity" value="#{orderController.selectedOrder.quantity}" />
+
+            <h:commandButton value="Save Changes" action="#{orderController.saveChanges}" />
+        </h:panelGrid>
+	</h:form>
+</h:body>
+</html>
